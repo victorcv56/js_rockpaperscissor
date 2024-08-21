@@ -1,12 +1,9 @@
 
-function getComputerChoice() {
+function getComputerChoice() 
+{
     const getRandomNumner = (min, max) => {
         return Math.floor(Math.random() * (max - min) + min)
-        }
-
-    let scount = 0;
-    let pcount = 0;
-    let rcount = 0;
+    }
 
     let num = getRandomNumner(1, 10);
     let choice = '';
@@ -17,17 +14,24 @@ function getComputerChoice() {
     if (num > 6 ) choice + 'Scissors';
 }
 
-function getHumanChoice() {
+function getHumanChoice() 
+{
     let choice = prompt('Rock, Paper or Scissors?: ');
     return choice.toLowerCase();
 }
 
-function decideWinner(hChoice, cChoice) {
-    let score = 0;
+function startGame(hScore, cScore) 
+{
     
+    let hChoice = getHumanChoice();
+    let cChoice = getComputerChoice();
+
+    return innerChoice;
+
 }
-let compChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
+
+let innerChoice = decideWinner();
+console.log(innerChoice);
 
 
 
