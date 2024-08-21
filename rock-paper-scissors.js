@@ -22,17 +22,28 @@ function getHumanChoice()
 
 function startGame(hScore, cScore) 
 {
-    
     let hChoice = getHumanChoice();
     let cChoice = getComputerChoice();
 
-    return innerChoice;
+    while (hScore < 10 || cScore < 10)
+    {
+        if (hChoice === 'rock' && cChoice === 'scissors') hScore += 1;     
+        if (hChoice === 'paper' && cChoice === 'rock') hScore += 1;     
+        if (hChoice === 'scissors' && cChoice === 'paper') hScore += 1;     
+        if (cChoice === 'rock' && hChoice === 'scissors') cScore += 1;     
+        if (cChoice === 'paper' && hChoice === 'rock') cScore += 1;     
+        if (cChoice === 'scissors' && hChoice === 'paper') cScore += 1;     
 
+    }
 }
 
-let innerChoice = decideWinner();
-console.log(innerChoice);
+let hScore = 0;
+let cScore = 0;
 
+startGame(hScore, cScore) 
+{
+
+}
 
 
 
