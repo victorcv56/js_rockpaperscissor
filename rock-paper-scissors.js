@@ -28,22 +28,30 @@ function startGame(hScore, cScore)
     while (hScore < 10 || cScore < 10)
     {
         if (hChoice === 'rock' && cChoice === 'scissors') hScore += 1;     
-        if (hChoice === 'paper' && cChoice === 'rock') hScore += 1;     
-        if (hChoice === 'scissors' && cChoice === 'paper') hScore += 1;     
-        if (cChoice === 'rock' && hChoice === 'scissors') cScore += 1;     
-        if (cChoice === 'paper' && hChoice === 'rock') cScore += 1;     
-        if (cChoice === 'scissors' && hChoice === 'paper') cScore += 1;     
-
+        else if (hChoice === 'paper' && cChoice === 'rock') hScore += 1;     
+        else if (hChoice === 'scissors' && cChoice === 'paper') hScore += 1;     
+        else if (cChoice === 'rock' && hChoice === 'scissors') cScore += 1;     
+        else if (cChoice === 'paper' && hChoice === 'rock') cScore += 1;     
+        else if (cChoice === 'scissors' && hChoice === 'paper') cScore += 1;     
+        let hChoice = getHumanChoice();
+        let cChoice = getComputerChoice();
+    
     }
+    if (cScore == 10) {
+        console.log("Computer winss!");
+    }
+    else if (hScore == 10) {
+        console.log("Human winss!")
+    }
+    
+
 }
 
 let hScore = 0;
 let cScore = 0;
 
-startGame(hScore, cScore) 
-{
+startGame(hScore, cScore);
 
-}
 
 
 
