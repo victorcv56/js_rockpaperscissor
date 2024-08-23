@@ -1,17 +1,19 @@
 
 function getComputerChoice() 
 {
-    const getRandomNumner = (min, max) => {
+    const getRandomNumber = (min, max) => {
         return Math.floor(Math.random() * (max - min) + min)
     }
 
-    let num = getRandomNumner(1, 10);
+    let num = getRandomNumber(1, 10);
     let choice = '';
 
     console.log(num);
-    if (num < 3 + 1) choice + 'Rock';
-    if (num > 3  && num < 6 + 1) choice + 'Paper';
-    if (num > 6 ) choice + 'Scissors';
+    if (num < 3 + 1) choice += 'Rock';
+    else if (num > 3  && num < 6 + 1) choice += 'Paper';
+    else if (num > 6 ) choice += 'Scissors';
+    
+    return choice.toLowerCase();
 }
 
 function getHumanChoice() 
@@ -22,37 +24,40 @@ function getHumanChoice()
 
 function startGame(hScore, cScore) 
 {
-    let hChoice = getHumanChoice();
-    let cChoice = getComputerChoice();
-
-    while (hScore < 10 || cScore < 10)
+    while (hScore <= 3 || cScore <= 3)
     {
-        if (hChoice === 'rock' && cChoice === 'scissors') hScore += 1;     
-        else if (hChoice === 'paper' && cChoice === 'rock') hScore += 1;     
-        else if (hChoice === 'scissors' && cChoice === 'paper') hScore += 1;     
-        else if (cChoice === 'rock' && hChoice === 'scissors') cScore += 1;     
-        else if (cChoice === 'paper' && hChoice === 'rock') cScore += 1;     
-        else if (cChoice === 'scissors' && hChoice === 'paper') cScore += 1;     
         let hChoice = getHumanChoice();
         let cChoice = getComputerChoice();
-    
+
+        
+        if (hChoice == 'rock') 
+        {
+            if (cChoice == 'scissors') hScore += 1;
+            else if (cChoice == 'paper') cScore += 1;
+            else console.log('draw!');
+        }
+        console.log(`hScore = ${hScore} \ncScore = ${cScore}.`)
+
     }
-    if (cScore == 10) {
+    if (cScore == 3) {
         console.log("Computer winss!");
     }
-    else if (hScore == 10) {
+
+    else if (hScore == 3) {
         console.log("Human winss!")
     }
     
+    return hScore, cScore;
 
 }
+
 
 let hScore = 0;
 let cScore = 0;
 
 startGame(hScore, cScore);
 
-
+console.log(`score is ${hScore} vs ${cScore}`);
 
 
 
