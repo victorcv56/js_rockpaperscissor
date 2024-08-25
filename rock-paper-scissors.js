@@ -22,58 +22,59 @@ function getHumanChoice()
     return choice.toLowerCase();
 }
 
-function startGame(hScore, cScore) 
+function startGame() 
 {
+    let flag = true;
+
     while (flag) // This is where the bug is, || expression is activating until both scores are less 
     {
         let hChoice = getHumanChoice();
         let cChoice = getComputerChoice();
-        flag = true;
+        console.log(`User threw ${hChoice}.\nComputer threw ${cChoice}.`)
         
         if (hChoice == 'rock') 
         {
-            if (cChoice == 'scissors') hScore += 1;
+            if (cChoice == 'scissors') uScore += 1;
             else if (cChoice == 'paper') cScore += 1;
             else console.log('draw!');
         }
 
         if (hChoice == 'paper') 
         {
-            if (cChoice == 'rock') hScore += 1;
+            if (cChoice == 'rock') uScore += 1;
             else if (cChoice == 'scissors') cScore += 1;
             else console.log('draw!');
         }
         
         if (hChoice == 'scissors') 
         {
-            if (cChoice == 'paper') hScore += 1;
+            if (cChoice == 'paper') uScore += 1;
             else if (cChoice == 'rock') cScore += 1;
             else console.log('draw!');
         }
+        console.log(``)
+        console.log(`uScore = ${uScore} \ncScore = ${cScore}`)
         
-        console.log(`hScore = ${hScore} \ncScore = ${cScore}.`)
-
+        if (uScore == 3 || cScore == 3) flag = false;
     }
 
     if (cScore == 3) {
         console.log("Computer winss!");
     }
 
-    else if (hScore == 3) {
+    else if (uScore == 3) {
         console.log("Human winss!")
     }
     
-    return hScore, cScore;
-
 }
 
 
-let hScore = 0;
+let uScore = 0;
 let cScore = 0;
 
-startGame(hScore, cScore);
+startGame();
 
-console.log(`score is ${hScore} vs ${cScore}`);
+console.log(`score is ${uScore} vs ${cScore}`);
 
 
 
