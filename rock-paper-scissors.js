@@ -24,11 +24,11 @@ function getHumanChoice()
 
 function startGame(hScore, cScore) 
 {
-    while (hScore <= 3 || cScore <= 3)
+    while (flag) // This is where the bug is, || expression is activating until both scores are less 
     {
         let hChoice = getHumanChoice();
         let cChoice = getComputerChoice();
-
+        flag = true;
         
         if (hChoice == 'rock') 
         {
@@ -36,9 +36,25 @@ function startGame(hScore, cScore)
             else if (cChoice == 'paper') cScore += 1;
             else console.log('draw!');
         }
+
+        if (hChoice == 'paper') 
+        {
+            if (cChoice == 'rock') hScore += 1;
+            else if (cChoice == 'scissors') cScore += 1;
+            else console.log('draw!');
+        }
+        
+        if (hChoice == 'scissors') 
+        {
+            if (cChoice == 'paper') hScore += 1;
+            else if (cChoice == 'rock') cScore += 1;
+            else console.log('draw!');
+        }
+        
         console.log(`hScore = ${hScore} \ncScore = ${cScore}.`)
 
     }
+
     if (cScore == 3) {
         console.log("Computer winss!");
     }
